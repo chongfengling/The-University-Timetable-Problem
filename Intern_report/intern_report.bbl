@@ -1,0 +1,149 @@
+\begin{thebibliography}{xx}
+
+\harvarditem[{Ashish Vaswani} et~al.]{{Ashish Vaswani}, Shazeer, Parmar,
+  Uszkoreit, Jones, Gomez, Kaiser \harvardand\
+  Polosukhin}{2017}{(ashishvaswani2017)attention}
+{Ashish Vaswani}, Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez,
+  A.~N., Kaiser, L. \harvardand\ Polosukhin, I.  \harvardyearleft
+  2017\harvardyearright , `Attention {{Is All You Need}}', {\em
+  arXiv:1706.03762 [cs]} .
+
+\harvarditem[Burke et~al.]{Burke, McCollum, Meisels, Petrovic \harvardand\
+  Qu}{2007}{(burke2007)graphbased}
+Burke, E.~K., McCollum, B., Meisels, A., Petrovic, S. \harvardand\ Qu, R.
+  \harvardyearleft 2007\harvardyearright , `A graph-based hyper-heuristic for
+  educational timetabling problems', {\em European Journal of Operational
+  Research} {\bf 176}(1),~177--192.
+
+\harvarditem[Burke et~al.]{Burke, Marecek, Parkes \harvardand\
+  Rudov{\'a}}{2012}{(burke2012)branchandcut}
+Burke, E., Marecek, J., Parkes, A. \harvardand\ Rudov{\'a}, H.
+  \harvardyearleft 2012\harvardyearright , `A branch-and-cut procedure for the
+  {{Udine Course Timetabling}} problem', {\em Annals of Operations Research}
+  {\bf 194},~71--87.
+
+\harvarditem{Carter}{2000}{(carter2000)comprehensive}
+Carter, M.  \harvardyearleft 2000\harvardyearright , `A comprehensive study of
+  educational timetabling - a survey'.
+
+\harvarditem{Costa}{1994}{(costa1994)tabu}
+Costa, D.  \harvardyearleft 1994\harvardyearright , `A tabu search algorithm
+  for computing an operational timetable', {\em European Journal of Operational
+  Research} {\bf 76}(1),~98--110.
+
+\harvarditem[Devlin et~al.]{Devlin, Chang, Lee \harvardand\
+  Toutanova}{2019}{(devlin2019)bert}
+Devlin, J., Chang, M.-W., Lee, K. \harvardand\ Toutanova, K.  \harvardyearleft
+  2019\harvardyearright , `{{BERT}}: Pre-training of {{Deep Bidirectional
+  Transformers}} for {{Language Understanding}}', {\em arXiv:1810.04805 [cs]} .
+
+\harvarditem[Even et~al.]{Even, Itai \harvardand\
+  Shamir}{1975}{(even1975)complexity}
+Even, S., Itai, A. \harvardand\ Shamir, A.  \harvardyearleft
+  1975\harvardyearright , On the complexity of time table and multi-commodity
+  flow problems, {\em in} `16th {{Annual Symposium}} on {{Foundations}} of
+  {{Computer Science}} (Sfcs 1975)', {IEEE}, {USA}, pp.~184--193.
+
+\harvarditem[Fazel~Zarandi et~al.]{Fazel~Zarandi, Sadat~Asl, Sotudian
+  \harvardand\ Castillo}{2020}{(fazelzarandi2020)state}
+Fazel~Zarandi, M.~H., Sadat~Asl, A.~A., Sotudian, S. \harvardand\ Castillo, O.
+  \harvardyearleft 2020\harvardyearright , `A state of the art review of
+  intelligent scheduling', {\em Artificial Intelligence Review} {\bf
+  53}(1),~501--593.
+
+\harvarditem{Gendreau \harvardand\ Potvin}{2005}{(gendreau2005)metaheuristics}
+Gendreau, M. \harvardand\ Potvin, J.-Y.  \harvardyearleft 2005\harvardyearright
+  , `Metaheuristics in {{Combinatorial Optimization}}', {\em Annals of
+  Operations Research} p.~25.
+
+\harvarditem{Glover}{1990}{(glover1990)tabu}
+Glover, F.  \harvardyearleft 1990\harvardyearright , `Tabu {{Search}}: A
+  {{Tutorial}}', {\em Interfaces} {\bf 20}(4),~74--94.
+
+\harvarditem{Hertz}{1991}{(hertz1991)tabu}
+Hertz, A.  \harvardyearleft 1991\harvardyearright , `Tabu search for large
+  scale timetabling problems', {\em European Journal of Operational Research}
+  {\bf 54}(1),~39--47.
+
+\harvarditem{Hertz \harvardand\ Werra}{1987}{(hertz1987)using}
+Hertz, A. \harvardand\ Werra, D.  \harvardyearleft 1987\harvardyearright ,
+  `Using tabu search techniques for graph coloring', {\em Computing} {\bf
+  39}(4),~345--351.
+
+\harvarditem{Hussin}{2005}{(hussin2005)tabu}
+Hussin, N.~M.  \harvardyearleft 2005\harvardyearright , `{{TABU SEARCH BASED
+  HYPER}}-{{HEURISTIC APPROACHES TO EXAMINATION TIMETABLING}}',  p.~230.
+
+\harvarditem{Johnes}{2015}{(johnes2015)operational}
+Johnes, J.  \harvardyearleft 2015\harvardyearright , `Operational {{Research}}
+  in education', {\em European Journal of Operational Research} {\bf
+  243}(3),~683--696.
+
+\harvarditem{Kendall \harvardand\ Hussin}{2005}{(kendall2005)investigation}
+Kendall, G. \harvardand\ Hussin, N.~M.  \harvardyearleft 2005\harvardyearright
+  , An {{Investigation}} of a {{Tabu}}-{{Search}}-{{Based Hyper}}-{{Heuristic}}
+  for {{Examination Timetabling}}, {\em in} G.~Kendall, E.~K. Burke,
+  S.~Petrovic \harvardand\ M.~Gendreau, eds, `Multidisciplinary {{Scheduling}}:
+  Theory and {{Applications}}', {Springer-Verlag}, {New York}, pp.~309--328.
+
+\harvarditem[Kool et~al.]{Kool, {van Hoof} \harvardand\
+  Welling}{2019}{(kool2019)attention}
+Kool, W., {van Hoof}, H. \harvardand\ Welling, M.  \harvardyearleft
+  2019\harvardyearright , `Attention, {{Learn}} to {{Solve Routing
+  Problems}}!', {\em arXiv:1803.08475 [cs, stat]} .
+
+\harvarditem{Kristiansen \harvardand\
+  Stidsen}{2013}{(kristiansen2013)comprehensive}
+Kristiansen, S. \harvardand\ Stidsen, T. J.~R.  \harvardyearleft
+  2013\harvardyearright , `A {{Comprehensive Study}} of {{Educational
+  Timetabling}} - a {{Survey}}'.
+
+\harvarditem{McCollum}{2006}{(mccollum2006)perspective}
+McCollum, B.  \harvardyearleft 2006\harvardyearright , `A {{Perspective}} on
+  {{Bridging}} the {{Gap Between Theory}} and {{Practice}} in {{University
+  Timetabling}}'.
+
+\harvarditem{Schaerf}{1999}{(schaerf1999)survey}
+Schaerf, A.  \harvardyearleft 1999\harvardyearright , `A {{Survey}} of
+  {{Automated Timetabling}}', {\em Artificial Intelligence Review} p.~41.
+
+\harvarditem{Silver}{2004}{(silver2004)overview}
+Silver, E.~A.  \harvardyearleft 2004\harvardyearright , `An overview of
+  heuristic solution methods', {\em Journal of the Operational Research
+  Society} {\bf 55}(9),~936--956.
+
+\harvarditem[Tuga et~al.]{Tuga, Berretta \harvardand\
+  Mendes}{2007}{(tuga2007)hybrid}
+Tuga, M., Berretta, R. \harvardand\ Mendes, A.  \harvardyearleft
+  2007\harvardyearright , `A {{Hybrid Simulated Annealing}} with {{Kempe Chain
+  Neighborhood}} for the {{University Timetabling Problem}}', {\em 6th
+  IEEE/ACIS International Conference on Computer and Information Science (ICIS
+  2007)} pp.~400--405.
+
+\harvarditem{{\em {{UniTime}} | {{University Timetabling}}}}{n.d.}{()unitime}
+{\em {{UniTime}} | {{University Timetabling}}}  \harvardyearleft
+  n.d.\harvardyearright , https://www.unitime.org/index.php?tab=0.
+
+\harvarditem{Werra}{1985}{(werra1985)introduction}
+Werra, D.  \harvardyearleft 1985\harvardyearright , `An introduction to
+  timetabling', {\em European Journal of Operational Research} {\bf
+  19},~151--162.
+
+\harvarditem{Werra}{1997}{(werra1997)combinatorics}
+Werra, D.  \harvardyearleft 1997\harvardyearright , `The combinatorics of
+  timetabling', {\em European Journal of Operational Research} {\bf
+  96}(3),~504--513.
+
+\harvarditem{Werra \harvardand\ Hertz}{1989}{(werra1989)tabu}
+Werra, D. \harvardand\ Hertz, A.  \harvardyearleft 1989\harvardyearright ,
+  `Tabu search techniques: A tutorial and an application to neural networks',
+  {\em Operations-Research-Spektrum} {\bf 11}(3),~131--141.
+
+\harvarditem{Wren}{1996}{(wren1996)scheduling}
+Wren, A.  \harvardyearleft 1996\harvardyearright , Scheduling, timetabling and
+  rostering \textemdash{} {{A}} special relationship?, {\em in} G.~Goos,
+  J.~Hartmanis, J.~Leeuwen, E.~Burke \harvardand\ P.~Ross, eds, `Practice and
+  {{Theory}} of {{Automated Timetabling}}', Vol. 1153, {Springer Berlin
+  Heidelberg}, {Berlin, Heidelberg}, pp.~46--75.
+
+\end{thebibliography}

@@ -1,0 +1,243 @@
+\documentclass{article}
+
+
+
+\usepackage{arxiv}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}		% Can be removed after putting your text content
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{doi}
+\usepackage{amsmath, amsthm, amssymb, bm, graphicx, mathrsfs}
+\usepackage{graphicx}
+\usepackage{subfigure}
+% \counterwithin{figure}{section}
+
+
+\title{A graph-based solver in the university course timetable scheduling\text}
+
+% \date{September 9, 1985}	% Here you can change the date presented in the paper title
+%\date{} 					% Or removing it
+
+\author{Chongfeng Ling\\1716474}
+
+% \author{ \href{https://orcid.org/0000-0000-0000-0000}{\includegraphics[scale=0.06]{orcid.pdf}\hspace{1mm}Chongfeng Ling}\thanks{Use footnote for providing further
+% 		information about author (webpage, alternative
+% 		address)---\emph{not} for acknowledging funding agencies.} \\
+	% Department of Computer Science\\
+	% Cranberry-Lemon University\\
+	% Pittsburgh, PA 15213 \\
+	% \texttt{hippo@cs.cranberry-lemon.edu} \\
+	% %% examples of more authors
+	% \And
+	% \href{https://orcid.org/0000-0000-0000-0000}{\includegraphics[scale=0.06]{orcid.pdf}\hspace{1mm}Elias D.~Striatum} \\
+	% Department of Electrical Engineering\\
+	% Mount-Sheikh University\\
+	% Santa Narimana, Levand \\
+	% \texttt{stariate@ee.mount-sheikh.edu} \\
+	% %% \AND
+	% %% Coauthor \\
+	% %% Affiliation \\
+	% %% Address \\
+	% %% \texttt{email} \\
+	% %% \And
+	% %% Coauthor \\
+	% %% Affiliation \\
+	% %% Address \\
+	% %% \texttt{email} \\
+	% %% \And
+	% %% Coauthor \\
+	% %% Affiliation \\
+	% %% Address \\
+	% %% \texttt{email} \\
+% }
+
+% Uncomment to remove the date
+\date{December 1, 2021}
+
+% Uncomment to override  the `A preprint' in the header
+\renewcommand{\headeright}{Intern Report}
+\renewcommand{\undertitle}{Intern Report}
+\renewcommand{\shorttitle}{Timatable Problem}
+
+%%% Add PDF metadata to help others organize their library
+%%% Once the PDF is generated, you can check the metadata with
+%%% $ pdfinfo template.pdf
+% \hypersetup{
+% pdftitle={A template for the arxiv style},
+% pdfsubject={q-bio.NC, q-bio.QM},
+% pdfauthor={David S.~Hippocampus, Elias D.~Striatum},
+% pdfkeywords={First keyword, Second keyword, More},
+% }
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+	% \lipsum[1]
+	\begin{center}
+		None
+	\end{center}
+\end{abstract}
+
+% keywords can be removed
+\keywords{Timetable Scheduling \and Graph Coloring \and Tabu Search \and Attention \and Reinforcement Learning}
+
+\newpage
+\tableofcontents
+\newpage
+\section{Introduction}
+
+Timetable scheduling is a practical problem with applications in several area including transportation, hospital, education and so on. Every semester an university will develop timetables for teach activities and examination to meeting students and staffs' requirements and school hardware source limitation. Credit to pervious works, university timetabling has be divide into two interrelated subproblem: timetabling subproblem and grouping subproblem \citep{(werra1989)tabu}. While a lot of studies has been spent on this topic, there is still a big gap between algorithm result and practical timetable \citep{(mccollum2006)perspective} mainly due to various constraints in different university and large scale of data. Consider these constraints with a large volume of data, timetable scheduling is a NP-hard or NP-complete problem \citep{(even1975)complexity}, which means it can not be solved in a polynomial time with large scale problem data. Hence, up to now most of solver is based on heuristic algorithm and its variant like meta-heuristic and hyper-heuristic. This paper attempts to implement some heuristic algorithm and introduce a new way called Attention Mechanism with Reinforcement Learning to solve course timetable problem in XJTLU.
+
+The structure of this paper is organized as follow. Section \ref{sec: Literature Review} is a review of the development in timetable scheduling including algorithms, computer system and benchmarks. Section \ref{sec: Problem Description} is a problem description based on graph theory. In section \ref{sec: Research Approach} we present methodologies  including Tabu Search algorithm and attention with reinforcement learning. Specific execution plan with timeline is stated in Section \ref{sec: Execution Plan}.
+
+\section{Literature Review}
+\label{sec: Literature Review}
+
+Owing to the enormous achievements in university timetable problem research, numerous literatures has been published and areas of concern to them are including model representing, meta-heuristic algorithm, computer system and benchmarks.
+
+In 1985, \citet{(werra1985)introduction} stated a formal way to model course-teacher timetabling and provided formulations in both graph edge coloring and graph node coloring. Then \cite{(hertz1987)using} solved big random graph coloring problem by tabu algorithm and the TABUCOL procedure, compared with annealing algorithm, the CPU-time was much shorter and furthermore, for some unsolved graph, tabu algorithm could indicate the "bad" edges that needed to be reduced. The principles and illustrations of Tabu Algorithm were given by \cite{(werra1989)tabu} and later \cite{(glover1990)tabu} mentioned that the advantage of Tabu Search compared other meta-heuristic algorithm owing to its long-term memory. \cite{(hertz1991)tabu} in his paper used Tabu Algorithm to solved timetabling problem and due to hard constraints can not guarantee the existence of a feasible solution, he first defined the feasible solution respect to soft constraints and optimized it by hard constraints. In addition, he mentioned another problem that group students into class which they have the same courses in the same class. \cite{(costa1994)tabu} made a detailed description about timetable problem and mathematical formulation. Based on the property of meta-heuristic, he generated a general Tabu Algorithm which can be adapted under various constraints and used in different university and colleges. In 1997, \cite{(werra1997)combinatorics} added a new constraint to spread lectures uniformly across a set of periods and proved some existence of solutions under some typical constraints. \cite{(schaerf1999)survey} made a survey about how heuristic algorithm could assign timetable automatically. \cite{(carter2000)comprehensive} described a comprehensive university timetable system in Waterloo including system structure and algorithm phase. Additionally, he introduced decomposition in both student section and timetable which will reduce algorithm complexity and conflicts. With the development of enormous heuristic algorithms, \cite{(silver2004)overview} made a review of them and stated two ways to evaluate their performance. \cite{(gendreau2005)metaheuristics} took another combinatorial optimization problem (OSP) TSP as an examples and summarized usage of different meta-heuristic in one OSP. A hyper-heuristic algorithm based on Tabu Algorithm was used to solved examination by \cite{(hussin2005)tabu} and \cite{(kendall2005)investigation} which is parameter free. \cite{(mccollum2006)perspective} gave a overview on gaps of timetabling problem between theory and practice and bridged the gaps between the two. Moreover, The Second International Timetable Competition of 2007 also aimed to reduce the gaps and divided problem into three tracks, though in a general system the last two problems are not isolated with each other \citep{()unitime}. To reduce the difficult of finding a feasible initial solution, \cite{(burke2007)graphbased} create heuristic algorithm based on graph degree and operate algorithm in a hyper-heuristic search space. Similar to \cite{(hertz1987)using}, \cite{(tuga2007)hybrid} generated a hybrid-heuristic algorithm and change two kinds of constraints to get a feasible solution in a diversification space. \cite{(burke2012)branchandcut} used a formulation to reduce the number of soft constraints to bounded the complexity of problem. \cite{(kristiansen2013)comprehensive} and \cite{(johnes2015)operational} made a review of timetabling scheduling and student section. In addition, \cite{(kristiansen2013)comprehensive} stated most of previous practical research in timetable were founded that they were based on simulation dataset. Hence they introduced a open-source dataset in Denmark university and its format description. Though tabu Search with its variants made a great deal in timetabling problem, \cite{(fazelzarandi2020)state} affirmation the efficiency of hyper-heuristic algorithms but more attention was needed to identify which method dominated the search space of optimization problems. Due to the complexity and urgent demands, there are some commercial and open-source tools published in the past several decades including Oracle Peoplesoft and \cite{()unitime}. With the development of Neural Network, \cite{(fazelzarandi2020)state} stated the advantages and disadvantages of some neural network algorithm and Tabu Search employed in scheduling. While attention mechanism successfully employed in some NLP models with transformer framework \citep{(ashishvaswani2017)attention,(devlin2019)bert}, \cite{(kool2019)attention} had used attention mechanism with reinforcement learning to solve TSP problem with up to 100 nodes.
+
+
+\section{Problem Description}
+\label{sec: Problem Description}
+
+In this section, we follow the terminology and problem descriptions by \cite{(werra1985)introduction}. According to the \cite{(wren1996)scheduling}, timetabling problem is defined as the allocation to arrange resources into space and time subjects to constrains such that satisfies a set of desirable objectives as many as possible. We will firstly definite sources in university and then list constraints under XJTLU requirement. One curriculum contains several courses while each course could be repeated more than once and thus split into multiple sections. The problem of finding the best grouping of students into corresponding course section is called grouping problem. Normally in every week several lectures with corresponding teachers are hold respect to the course. The comprehensive definitions of resources that involved in XJTLU are listed as follow:
+
+\begin{itemize}
+	\item Teacher set $T=\left\{t_{1}, \ldots, t_{j}\right\}$
+	\item Class set $C=\left(c_{1}, \ldots, c_{i}\right\}$. A class is a group of students who have the same curriculum.
+	\item Classroom set $CR=\{cr_{1},...,cr_{ncr}\}$
+	\item Requirement matrix $R=(r_{ij})$ gives the number of lectures involving $c_i$ and $t_j$ during one week or day.
+	\item A period is a day corresponding to weekly scheduling and each timeslot is a period in daily scheduling.
+	\item Course set $CO=\left\{co_{1}, ... , co_{nco}\right\}$. A course is defined by
+	      \begin{enumerate}
+		      \item a set of teachers
+		      \item a set of classes
+		      \item a set of lectures $L=\left\{\ell_{1}, \ldots, \ell_{n 1}\right\}$
+		      \item a set of course sections.
+	      \end{enumerate}
+\end{itemize}
+Based on the above definitions of sources, constraints of the timetable problem are as follow:
+\begin{enumerate}
+	\item teacher overlaps: a teacher cannot be involved simultaneously in more than one lecture.
+	\item class overlaps: a class cannot be involved simultaneously in more than one lecture.
+	\item classroom overlaps: a classroom cannot be involved simultaneously in more than one lecture.
+	\item period constraints: the duration of lectures could be one or two hours.
+	\item pre-assignment constraints: the lectures are preassigned to a set of specific periods or classrooms.
+	\item teacher unavailability: a lecture involving a teacher $t_{j}$ cannot be scheduled at a period during which $t_{j}$ is not available, including lunch break and university free afternoon (i.e. Wednesday afternoon in XJTLU)
+	\item  geographical constraints: Two lectures given in two distant classroom should be scheduled consecutively if and only if there is sufficient time for moving one classroom to another.
+	\item  compactness constraints: each teacher and student wants a schedule with a minimal number of holes and isolated lectures.
+	\item  distribution constraints: the identical lectures (i.e. the lectures of a same course) should be spread as uniformly as possible in weekly scheduling.
+\end{enumerate}
+Depend on university management, these constraints should be spilt into two parts: one is hard constraints and the other is soft constraints. While optimizing, a feasible solution is the one which satisfied all hard constraints, moreover, the optimal one is a feasible solution and satisfies all soft constraints.
+
+
+\subsection{Mathematical formulation: A Graph Coloring representation}
+
+Consider a basic course scheduling model in daily scheduling. For one course $co_a$ with a set of lectures $L=\left\{\ell_{1}, \ldots, \ell_{b}\right\}$, we denote a lecture-node $m_{ab}$ for each course and lecture. Due to the class overlaps constraint, all pairs of lecture note in course $co_a$ are connected by edges. While assume all course have no sections, if there is a student taking both courses $co_{a1}$ and $co_{a2}$, we introduce an edge between every pair of lecture node $m_{a1b}$ and $m_{a2b}$. The feasible course scheduling among $p$ periods is respect to the node coloring of graph G with $p$ colors. An example is given in Figure \ref{Fig.main}. Here we have 3 courses and each of them has 1, 2 or 3 lectures. Student group A takes courses $co_1$ and $co_2$, another group B takes $co_2$ and $co_3$. A feasible solution is drawn by 5 colors, which means at least 5 periods is needed to assign courses without conflicts.
+\begin{figure}[htbp]
+	\centering  %图片全局居中
+	\subfigure[without constrain ]{
+		\label{Fig.sub.1}
+		\includegraphics[width=0.45\textwidth]{fig1}}
+	\subfigure[with constraints]{
+		\label{Fig.sub.2}
+		\includegraphics[width=0.45\textwidth]{fig2}}
+	\caption{Graph Coloring representation}
+	\label{Fig.main}
+\end{figure}
+
+With pre-assignment constraints and teacher unavailability, we introduce two constraints samples: (1). $co_{1}$ not scheduled at period 1; (2). one lectures of $K_{3}$ at period 1 or 3. A set of period nodes are added to Figure \ref{Fig.sub.1} and then we get Figure \ref{Fig.sub.2}. Easy to prove that pre-assignment of periods are equal to teacher time unavailability.
+
+\subsection{Mathematical programming to optimal solution}
+
+While feasible solution is exists, or we are supposed to evaluate one from some bad solutions where have conflicts in hard constraints, we introduce an objective function $\sum_{i=1}^{q} \sum_{k=1}^{p} C_{i k} y_{i k}$, $y_{i k}=1$ if a lecture of course $co_{i}$ is scheduled at period $k$ and $y_{i k}=0$ otherwise; $C_{ik}$ is the cost function to indicate the plausibility of assignments. Hence, the problem is to find the best global optimal solution under constraints.
+
+\section{Research Approach}
+\label{sec: Research Approach}
+
+\subsection{Methodology}
+
+\subsubsection{Tabu Search}
+
+Tabu Search is a heuristic algorithm designed for finding a global optimal points and has been used for solving combinatorial optimization problem including graph node coloring, large scale timetabling and TSP efficiently. The basic process is given an feasible solution as initial points and an aspiration function to evaluate results, moving the initial point to another solution in the neighbor of initial point and making comparison and recording the better solution with aspiration function. The algorithm does not stop until get a global optimum or reach the max number of iterations. The core of Tabu Search algorithm is tabu list $T$ that all moves back to current point are forbidden in the next $|T|$ iterations. The general Tabu Search technique is shown as follow:
+\begin{align*}
+	 & \textbf { Initialization }                                                                                                                   \\
+	 & \qquad s:=\text { initial solution in } X                                                                                                    \\
+	 & \qquad \text {nbiter }:=0                                                                                                                    \\
+	 & \qquad \quad\left(* \text { current iteration }^{*}\right)                                                                                   \\
+	 & \qquad \text {bestiter }:=0                                                                                                                  \\
+	 & \qquad\quad\left(* \text { iteration when the best solution has been found }^{*}\right)                                                      \\
+	 & \qquad \text {bestsol }:=s                                                                                                                   \\
+	 & \qquad \quad\left(* \text { best solution }^{*}\right)                                                                                       \\
+	 & \qquad T:=\varnothing                                                                                                                        \\
+	 & \qquad \text { initialize the aspiration function } A \text {; }                                                                             \\
+	 & \textbf { while } \left.\left(f(s)>f^{*}\right) \textbf { and} \text{ (nbiter - bestiter }<\text { nbmax }\right) \textbf { do }             \\
+	 & \qquad \text { nbiter := nbiter }+1 \text {; }                                                                                               \\
+	 & \qquad\text { generate a set } V^{*} \text { of solutions } s_{i} \text { in } N(s) \text { which are either }\text {not tabu or such that } \\
+	 & \qquad \quad A(f(s)) \geq f\left(s_{i}\right) \text {; }                                                                                     \\
+	 & \qquad \text {choose a solution } s^{*} \text { minimizing } f \text { over } V^{*}                                                          \\
+	 & \qquad \text {update the aspiration function } A \text { and the tabu list } T \text {; }                                                    \\
+	 & \qquad \textbf {if } f\left(s^{*}\right)<f(\text { bestsol }) \textbf { then }                                                               \\
+	 & \qquad \quad \text {bestsol }:=s^{*} \text {; bestiter : = nbiter, }                                                                         \\
+	 & \qquad s:=s^{*} \text {; }
+\end{align*}
+
+\subsection{Data collection}
+
+There are two ways to collect dataset. The first is open-source datasets in UniTime collection (). The corresponding benchmark is also given. To deal real problem in XJTLU, we first try year 4 applied mathematics students and teachers with classrooms in Mathematics Building. Consider a large number of course sections, deal with the timetable of year 1 students is the third steps.
+
+\section{Execution Plan}
+\label{sec: Execution Plan}
+
+\begin{itemize}
+	\item Programming system
+	      \begin{enumerate}
+		      \item Data collection
+		            \begin{enumerate}
+			            \item Online dataset: Reader function of XML file in Python. Timeline: Dec. 3 - Dec. 5
+			            \item XJTLU dataset:
+		            \end{enumerate}
+	      \end{enumerate}
+	\item Algorithm
+	      \begin{enumerate}
+		      \item Tabu Algorithm
+		            \begin{enumerate}
+			            \item random graph coloring. Timeline:Dec. 2 - Dec. 4
+			            \item timetabling subproblem with online dataset. Timeline: Dec. 4 - Dec. 6
+			            \item grouping subproblem with online dataset. Timeline: Dec. 6 - Dec. 15
+			            \item real timetabling subproblem in XJTLU, Y4, AM. Timeline: Dec. 20 - Jun. 14
+			            \item real grouping subproblem in XJTLU, Y1. Timeline: Dec. 20 - Jun. 27
+		            \end{enumerate}
+		      \item graph decomposition algorithm. Timeline: Jun. 17 - Jun. 23
+		      \item Attention mechanism Reinforcement Learning
+		            \begin{enumerate}
+			            \item Attention mechanism. Timeline: Jun. 24 - Jun. 30
+			            \item Reinforcement Learning. Timeline: Feb. 1 - Feb. 13
+			            \item Attention mechanism with RL in TSP: Feb.14 -Feb. 20
+			            \item real timetable scheduling problem in XJTLU.
+		            \end{enumerate}
+	      \end{enumerate}
+	\item Skills
+	      \begin{enumerate}
+		      \item Plot graph in Python.
+	      \end{enumerate}
+\end{itemize}
+
+
+\bibliographystyle{agsm}
+\bibliography{references}
+
+
+
+\end{document}
