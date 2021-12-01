@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.5.20)  1 DEC 2021 20:35
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.5.20)  1 DEC 2021 20:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -516,17 +516,17 @@ File: fig2.png Graphic file (type bmp)
  [4]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [5] (./intern_report.bbl [6]) [7] (./intern_report.aux)
+ [5] [6] (./intern_report.bbl) [7] (./intern_report.aux)
 Package rerunfilecheck Info: File `intern_report.out' has not changed.
-(rerunfilecheck)             Checksum: 4858E22F74D69B542120B1FBC259BE10;1641.
+(rerunfilecheck)             Checksum: EDB5A1592A80ADAEBA7BE19D21FA5398;1968.
  ) 
 Here is how much of TeX's memory you used:
  12135 strings out of 478866
  183179 string characters out of 5865579
- 660166 words of memory out of 5000000
+ 659166 words of memory out of 5000000
  31780 multiletter control sequences out of 15000+600000
  445690 words of font info for 66 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 83i,11n,88p,4724b,435s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 83i,11n,88p,4724b,474s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on intern_report.pdf (7 pages).
