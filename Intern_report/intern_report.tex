@@ -5,6 +5,9 @@
 \usepackage{arxiv}
 
 \usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage{fontspec}
+\usepackage[slantfont, boldfont]{xeCJK}
+
 \usepackage[T1]{fontenc}    % use 8-bit T1 fonts
 \usepackage{hyperref}       % hyperlinks
 \usepackage{url}            % simple URL typesetting
@@ -21,47 +24,45 @@
 \usepackage{subfigure}
 % \counterwithin{figure}{section}
 
-
-\title{A graph-based solver in the university course timetable scheduling\text}
-
+\title{A graph-based solver in the university course timetable scheduling\\
+一个基于图着色的大学课程排课求解器}
 % \date{September 9, 1985}	% Here you can change the date presented in the paper title
 %\date{} 					% Or removing it
 
-\author{Chongfeng Ling\\1716474}
+% \author{Chongfeng Ling\\1716474}
 
-% \author{ \href{https://orcid.org/0000-0000-0000-0000}{\includegraphics[scale=0.06]{orcid.pdf}\hspace{1mm}Chongfeng Ling}\thanks{Use footnote for providing further
-% 		information about author (webpage, alternative
-% 		address)---\emph{not} for acknowledging funding agencies.} \\
-	% Department of Computer Science\\
-	% Cranberry-Lemon University\\
-	% Pittsburgh, PA 15213 \\
-	% \texttt{hippo@cs.cranberry-lemon.edu} \\
-	% %% examples of more authors
-	% \And
+\author{ \hspace{1mm}Chongfeng Ling \\
+	1716474\\
+	Department of Applied Mathematics\\
+	Xi'an Jiaotong-Liverpool University\\
+	\texttt{Chongfeng.Ling17@student.xjtlu.edu.cn} \\
+	%% examples of more authors
+	\And
 	% \href{https://orcid.org/0000-0000-0000-0000}{\includegraphics[scale=0.06]{orcid.pdf}\hspace{1mm}Elias D.~Striatum} \\
 	% Department of Electrical Engineering\\
 	% Mount-Sheikh University\\
 	% Santa Narimana, Levand \\
 	% \texttt{stariate@ee.mount-sheikh.edu} \\
-	% %% \AND
-	% %% Coauthor \\
-	% %% Affiliation \\
-	% %% Address \\
-	% %% \texttt{email} \\
-	% %% \And
-	% %% Coauthor \\
-	% %% Affiliation \\
-	% %% Address \\
-	% %% \texttt{email} \\
-	% %% \And
-	% %% Coauthor \\
-	% %% Affiliation \\
-	% %% Address \\
-	% %% \texttt{email} \\
-% }
+	% \AND
+	M.B.N. (Thijs) Kouwenhoven \\
+	Supervisor \\
+	Head, Department of Physics \\
+	Xi'an Jiaotong-Liverpool University\\
+	\texttt{t.kouwenhoven@xjtlu.edu.cn} \\
+	% \And
+	% Coauthor \\
+	% Affiliation \\
+	% Address \\
+	% \texttt{email} \\
+	% \And
+	% Coauthor \\
+	% Affiliation \\
+	% Address \\
+	% \texttt{email} \\
+}
 
 % Uncomment to remove the date
-\date{December 1, 2021}
+% \date{December 1, 2021}
 
 % Uncomment to override  the `A preprint' in the header
 \renewcommand{\headeright}{Intern Report}
@@ -81,12 +82,12 @@
 \begin{document}
 \maketitle
 
-\begin{abstract}
-	% \lipsum[1]
-	\begin{center}
-		None
-	\end{center}
-\end{abstract}
+% \begin{abstract}
+% 	% \lipsum[1]
+% 	\begin{center}
+% 		None
+% 	\end{center}
+% \end{abstract}
 
 % keywords can be removed
 \keywords{Timetable Scheduling \and Graph Coloring \and Tabu Search \and Attention \and Reinforcement Learning}
@@ -100,6 +101,8 @@ Timetable scheduling is a practical problem with applications in several area in
 
 The structure of this paper is organized as follow. Section \ref{sec: Literature Review} is a review of the development in timetable scheduling including algorithms, computer system and benchmarks. Section \ref{sec: Problem Description} is a problem description based on graph theory. In section \ref{sec: Research Approach} we present methodologies  including Tabu Search algorithm and Attention Mechanism with Reinforcement Learning. Specific execution plan with timeline is stated in Section \ref{sec: Execution Plan}.
 
+\newpage
+
 \section{Literature Review}
 \label{sec: Literature Review}
 
@@ -107,6 +110,7 @@ Owing to the enormous achievements in university timetable problem research, num
 
 In 1985, \citet{(werra1985)introduction} stated a formal way to model course-teacher timetabling and provided formulations in both graph edge coloring and graph node coloring. Then \cite{(hertz1987)using} solved big random graph coloring problem by tabu algorithm and the TABUCOL procedure, compared with annealing algorithm, the CPU-time was much shorter and furthermore, for some unsolved graph, tabu algorithm could indicate the "bad" edges that needed to be reduced. The principles and illustrations of Tabu Algorithm were given by \cite{(werra1989)tabu} and later \cite{(glover1990)tabu} mentioned that the advantage of Tabu Search compared other meta-heuristic algorithm owing to its long-term memory. \cite{(hertz1991)tabu} in his paper used Tabu Algorithm to solved timetabling problem and due to hard constraints can not guarantee the existence of a feasible solution, he first defined the feasible solution respect to soft constraints and optimized it by hard constraints. In addition, he mentioned another problem that group students into class which they have the same courses in the same class. \cite{(costa1994)tabu} made a detailed description about timetable problem and mathematical formulation. Based on the property of meta-heuristic, he generated a general Tabu Algorithm which can be adapted under various constraints and used in different university and colleges. In 1997, \cite{(werra1997)combinatorics} added a new constraint to spread lectures uniformly across a set of periods and proved some existence of solutions under some typical constraints. \cite{(schaerf1999)survey} made a survey about how heuristic algorithm could assign timetable automatically. \cite{(carter2000)comprehensive} described a comprehensive university timetable system in Waterloo including system structure and algorithm phase. Additionally, he introduced decomposition in both student section and timetable which will reduce algorithm complexity and conflicts. With the development of enormous heuristic algorithms, \cite{(silver2004)overview} made a review of them and stated two ways to evaluate their performance. \cite{(gendreau2005)metaheuristics} took another combinatorial optimization problem (OSP) TSP as an examples and summarized usage of different meta-heuristic in one OSP. A hyper-heuristic algorithm based on Tabu Algorithm was used to solved examination by \cite{(hussin2005)tabu} and \cite{(kendall2005)investigation} which is parameter free. \cite{(mccollum2006)perspective} gave a overview on gaps of timetabling problem between theory and practice and bridged the gaps between the two. Moreover, The Second International Timetable Competition of 2007 also aimed to reduce the gaps and divided problem into three tracks, though in a general system the last two problems are not isolated with each other \citep{()unitime}. To reduce the difficult of finding a feasible initial solution, \cite{(burke2007)graphbased} create heuristic algorithm based on graph degree and operate algorithm in a hyper-heuristic search space. Similar to \cite{(hertz1987)using}, \cite{(tuga2007)hybrid} generated a hybrid-heuristic algorithm and change two kinds of constraints to get a feasible solution in a diversification space. \cite{(burke2012)branchandcut} used a formulation to reduce the number of soft constraints to bounded the complexity of problem. \cite{(kristiansen2013)comprehensive} and \cite{(johnes2015)operational} made a review of timetabling scheduling and student section. In addition, \cite{(kristiansen2013)comprehensive} stated most of previous practical research in timetable were founded that they were based on simulation dataset. Hence they introduced a open-source dataset in Denmark university and its format description. Though tabu Search with its variants made a great deal in timetabling problem, \cite{(fazelzarandi2020)state} affirmation the efficiency of hyper-heuristic algorithms but more attention was needed to identify which method dominated the search space of optimization problems. Due to the complexity and urgent demands, there are some commercial and open-source tools published in the past several decades including Oracle Peoplesoft and \cite{()unitime}. With the development of Neural Network, \cite{(fazelzarandi2020)state} stated the advantages and disadvantages of some neural network algorithm and Tabu Search employed in scheduling. While Attention Mechanism successfully employed in some NLP models with transformer framework \citep{(ashishvaswani2017)attention,(devlin2019)bert}, \cite{(kool2019)attention} had used Attention Mechanism with Reinforcement Learning to solve TSP problem with up to 100 nodes.
 
+\newpage
 
 \section{Problem Description}
 \label{sec: Problem Description}
@@ -163,6 +167,8 @@ With pre-assignment constraints and teacher unavailability, we introduce two con
 
 While feasible solution is exists, or we are supposed to evaluate one from some bad solutions where have conflicts in hard constraints, we introduce an objective function $\sum_{i=1}^{q} \sum_{k=1}^{p} C_{i k} y_{i k}$, $y_{i k}=1$ if a lecture of course $co_{i}$ is scheduled at period $k$ and $y_{i k}=0$ otherwise; $C_{ik}$ is the cost function to indicate the plausibility of assignments. Hence, the problem is to find the best global optimal solution under constraints.
 
+\newpage
+
 \section{Research Approach}
 \label{sec: Research Approach}
 
@@ -201,9 +207,11 @@ Tabu Search is a heuristic algorithm designed for finding a global optimal point
 
 There are two ways to collect dataset. The first is open-source datasets in UniTime collection (). The corresponding benchmark is also given. To deal real problem in XJTLU, we first try year 4 applied mathematics students and teachers with classrooms in Mathematics Building. Consider a large number of course sections, deal with the timetable of year 1 students is the third steps.
 
+\newpage
+
 \section{Execution Plan}
 \label{sec: Execution Plan}
-
+\subsection{Timeline}
 \begin{itemize}
 	\item Programming system
 	      \begin{enumerate}
@@ -240,10 +248,13 @@ There are two ways to collect dataset. The first is open-source datasets in UniT
 	      \end{enumerate}
 \end{itemize}
 
+\subsection{Challenge}
+
+
+\newpage
 
 \bibliographystyle{agsm}
 \bibliography{references}
-
 
 
 \end{document}
