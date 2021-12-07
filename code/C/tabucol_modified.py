@@ -11,6 +11,7 @@ from networkx.algorithms.approximation import max_clique
 from Coloring_networkx_addons import ThinGraph, is_coloring_feasible
 from timeit import default_timer
 import time
+import numpy as np
 
 def Tabucol_opt(G, k, C_L=6, C_lambda=0.6, C_maxiter=100000, verbose=False):
     '''Tabucol_opt provides the graph coloring with the smallest number of
@@ -64,6 +65,11 @@ def Tabucol(G, k, C_L=6, C_lambda=0.6, C_maxiter=100000, verbose=False):
                   for col in color_classes.keys()}
     # F is the total number of violations (violated edges)
     F = sum(len(v) for v in viol_edges.values())
+
+    # matrix representation
+    # edge_matrix =    
+    # color_matrix = 
+
 
     # initiate local search in 1-move neighborhood
     # create tabu dictionary with (node, col) as key and niter as value
