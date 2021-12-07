@@ -90,25 +90,39 @@
 % \end{abstract}
 
 % keywords can be removed
-\keywords{Timetable Scheduling \and Graph Coloring \and Tabu Search \and Attention \and Reinforcement Learning}
+\keywords{Timetable Scheduling \and Graph Coloring \and Tabu Search \and Reinforcement Learning}
 
 \newpage
 \tableofcontents
 \newpage
+
+\begin{abstract}
+	% \begin{center}
+	Timetabling problem is popular in various areas and can be formulated to graph coloring problem. We consider a simple kind - the university timetabling problem in XJTLU. Due to the large scale number of people and constrains, we use and modified several heuristic algorithms as our solver to assign timetables. With the development of Neural Networks and its satisfied applications in other combinatorial problems, we also attempt to apply Reinforcement Learning in our problem. Final a basic timetabling problem will be introduced which can make a timetable for some departments in XJTLU.
+	% \end{center}
+\end{abstract}
+
+\newpage
+
 \section{Introduction}
 
-Timetable scheduling is a practical problem with applications in several area including transportation, hospital, education and so on. Every semester an university will develop timetables for teach activities and examination to meeting students and staffs' requirements and school hardware source limitation. Credit to pervious works, university timetabling has be divide into two interrelated subproblem: timetabling subproblem and grouping subproblem \citep{(werra1989)tabu}. While a lot of studies has been spent on this topic, there is still a big gap between algorithm result and practical timetable \citep{(mccollum2006)perspective} mainly due to various constraints of different university and large scale of data. Consider these constraints with a large volume of data, timetable scheduling is a NP-hard or NP-complete problem \citep{(even1975)complexity}, which means it can not be solved in a polynomial time with large scale problem data. Up to now most of solver is based on heuristic algorithm and its variants like meta-heuristic and hyper-heuristic. This paper attempts to implement some heuristic algorithm and introduce a new method called Attention Mechanism with Reinforcement Learning to solve course timetable problem in Xi'an Jiaotong-Liverpool University (XJTLU).
+Timetable scheduling is a practical problem with applications in several areas including transportation, hospital, education and so on. Every semester an university will develop timetables for teach activities and examination to meeting students and staffs' requirements and school hardware source limitation. Credit to pervious works, university timetabling has be divide into two interrelated subproblem: timetabling subproblem and grouping subproblem based on graph coloring\citep{(hertz1991)tabu}. While a lot of studies has been spent on this topic, there is still a big gap between algorithm result and practical timetable \citep{(mccollum2006)perspective} mainly due to various constraints of different university and large scale of data. Consider these constraints with a large volume of data, timetable scheduling is a NP-hard or NP-complete problem \citep{(even1975)complexity}, which means it can not be solved in a polynomial time with large scale problem data. Up to now most of solver is based on heuristic algorithm and its variants like meta-heuristic and hyper-heuristic. This paper attempts to implement some heuristic algorithm while introducing a new method Reinforcement Learning to solve course timetable problem in Xi'an Jiaotong-Liverpool University (XJTLU).
 
-The structure of this paper is organized as follow. Section \ref{sec: Literature Review} is a review of the development in timetable scheduling including algorithms, computer system and benchmarks. Section \ref{sec: Problem Description} is a problem description based on graph theory. In section \ref{sec: Research Approach} we present methodologies  including Tabu Search algorithm and Attention Mechanism with Reinforcement Learning. Specific execution plan with timeline is stated in Section \ref{sec: Execution Plan}.
+The structure of this paper is organized as follow. Section \ref{sec: Literature Review} is a review of the development in timetable scheduling including algorithms, computer system and benchmarks. Section \ref{sec: Problem Description} is a problem description based on graph theory. In section \ref{sec: Research Approach} we present methodologies  including Tabu Search algorithm and Reinforcement Learning. Specific execution plan with timeline and challenges is stated in Section \ref{sec: Execution Plan}.
 
 \newpage
 
 \section{Literature Review}
 \label{sec: Literature Review}
 
-Owing to the enormous achievements in university timetable problem research, numerous literatures has been published and areas of concern to them are including model representing, meta-heuristic algorithm, computer system and benchmarks.
+Owing to the enormous achievements in university timetable problem research, numerous literatures has been published and areas of concern to them are including model representing with heuristic algorithm, computer system and benchmark.
 
-In 1985, \citet{(werra1985)introduction} stated a formal way to model course-teacher timetabling and provided formulations in both graph edge coloring and graph node coloring. Then \cite{(hertz1987)using} solved big random graph coloring problem by tabu algorithm and the TABUCOL procedure, compared with annealing algorithm, the CPU-time was much shorter and furthermore, for some unsolved graph, tabu algorithm could indicate the "bad" edges that needed to be reduced. The principles and illustrations of Tabu Algorithm were given by \cite{(werra1989)tabu} and later \cite{(glover1990)tabu} mentioned that the advantage of Tabu Search compared other meta-heuristic algorithm owing to its long-term memory. \cite{(hertz1991)tabu} in his paper used Tabu Algorithm to solved timetabling problem and due to hard constraints can not guarantee the existence of a feasible solution, he first defined the feasible solution respect to soft constraints and optimized it by hard constraints. In addition, he mentioned another problem that group students into class which they have the same courses in the same class. \cite{(costa1994)tabu} made a detailed description about timetable problem and mathematical formulation. Based on the property of meta-heuristic, he generated a general Tabu Algorithm which can be adapted under various constraints and used in different university and colleges. In 1997, \cite{(werra1997)combinatorics} added a new constraint to spread lectures uniformly across a set of periods and proved some existence of solutions under some typical constraints. \cite{(schaerf1999)survey} made a survey about how heuristic algorithm could assign timetable automatically. \cite{(carter2000)comprehensive} described a comprehensive university timetable system in Waterloo including system structure and algorithm phase. Additionally, he introduced decomposition in both student section and timetable which will reduce algorithm complexity and conflicts. With the development of enormous heuristic algorithms, \cite{(silver2004)overview} made a review of them and stated two ways to evaluate their performance. \cite{(gendreau2005)metaheuristics} took another combinatorial optimization problem (OSP) TSP as an examples and summarized usage of different meta-heuristic in one OSP. A hyper-heuristic algorithm based on Tabu Algorithm was used to solved examination by \cite{(hussin2005)tabu} and \cite{(kendall2005)investigation} which is parameter free. \cite{(mccollum2006)perspective} gave a overview on gaps of timetabling problem between theory and practice and bridged the gaps between the two. Moreover, The Second International Timetable Competition of 2007 also aimed to reduce the gaps and divided problem into three tracks, though in a general system the last two problems are not isolated with each other \citep{()unitime}. To reduce the difficult of finding a feasible initial solution, \cite{(burke2007)graphbased} create heuristic algorithm based on graph degree and operate algorithm in a hyper-heuristic search space. Similar to \cite{(hertz1987)using}, \cite{(tuga2007)hybrid} generated a hybrid-heuristic algorithm and change two kinds of constraints to get a feasible solution in a diversification space. \cite{(burke2012)branchandcut} used a formulation to reduce the number of soft constraints to bounded the complexity of problem. \cite{(kristiansen2013)comprehensive} and \cite{(johnes2015)operational} made a review of timetabling scheduling and student section. In addition, \cite{(kristiansen2013)comprehensive} stated most of previous practical research in timetable were founded that they were based on simulation dataset. Hence they introduced a open-source dataset in Denmark university and its format description. Though tabu Search with its variants made a great deal in timetabling problem, \cite{(fazelzarandi2020)state} affirmation the efficiency of hyper-heuristic algorithms but more attention was needed to identify which method dominated the search space of optimization problems. Due to the complexity and urgent demands, there are some commercial and open-source tools published in the past several decades including Oracle Peoplesoft and \cite{()unitime}. With the development of Neural Network, \cite{(fazelzarandi2020)state} stated the advantages and disadvantages of some neural network algorithm and Tabu Search employed in scheduling. While Attention Mechanism successfully employed in some NLP models with transformer framework \citep{(ashishvaswani2017)attention,(devlin2019)bert}, \cite{(kool2019)attention} had used Attention Mechanism with Reinforcement Learning to solve TSP problem with up to 100 nodes.
+Since the 1980s, the connection between timetabling problem and graph coloring with heuristic algorithms has been established. In 1985, \citet{(werra1985)introduction} stated a formal way to model course-teacher timetabling and provided formulations in both graph edge coloring and graph node coloring. Then \cite{(hertz1987)using} solved big random graph coloring problem by tabu algorithm and the TABUCOL procedure that reduces number color from maximum value, compared with annealing algorithm, the CPU-time was much shorter and furthermore, for some unsolved graph, tabu algorithm could indicate the "bad" edges that needed to be reduced. The principles and illustrations of Tabu Algorithm were given by \cite{(werra1989)tabu} and later \cite{(glover1990)tabu} mentioned that the advantage of Tabu Search compared other meta-heuristic algorithm owing to its long-term memory. \cite{(hertz1991)tabu} and \cite{(tuga2007)hybrid} used Tabu Algorithm to solved timetabling problem and due to hard constraints can not guarantee the existence of a feasible solution, he first defined the feasible solution respect to soft constraints and optimized it by hard constraints. In addition, he mentioned another problem that group students into class which they have the same courses in the same class. \cite{(costa1994)tabu} made a detailed description about timetable problem and mathematical formulation. Based on the property of meta-heuristic, he generated a general Tabu Algorithm which can be adapted under various constraints and used in different university and colleges. In 1997, \cite{(werra1997)combinatorics} added a new constraint to spread lectures uniformly across a set of periods and proved some existence of solutions under some typical constraints. \cite{(schaerf1999)survey} made a survey about how heuristic algorithm could assign timetable automatically. To reduce the influence of parameter choice, a hyper-heuristic algorithm based on Tabu Algorithm was used to solved examination by \cite{(hussin2005)tabu} and \cite{(kendall2005)investigation} which is parameter free. \cite{(galinier2006)survey} modified TABCOL algorithm and made a comparison between four graph coloring method with different search space and search strategies. An initial feasible solution is needed for all heuristic algorithm, \cite{(burke2007)graphbased} create heuristic algorithm based on graph degree and operate algorithm in a hyper-heuristic search space reduce the difficult of finding a feasible initial solution.
+
+With the development of Neural Network, \cite{(fazelzarandi2020)state} stated the advantages and disadvantages of some neural network algorithm and Tabu Search employed in scheduling. While Attention Mechanism successfully employed in some NLP models with transformer framework \citep{(ashishvaswani2017)attention,(devlin2019)bert}, \cite{(kool2019)attention} had used Attention Mechanism with Reinforcement Learning to solve TSP problem with up to 100 nodes.
+
+There are also some appreciated framework of timetabling systems. \cite{(carter2000)comprehensive} described a comprehensive university timetable system in Waterloo including system structure and algorithm phase. Additionally, he introduced decomposition in both student section and timetable which will reduce algorithm complexity and conflicts. In general, practical problems are more complexity than algorithm theory. \cite{(mccollum2006)perspective} gave a overview on gaps of timetabling problem between theory and practice and bridged the gaps between the two.  \cite{(kristiansen2013)comprehensive} and \cite{(johnes2015)operational} made a review of timetabling scheduling and student section. In addition, \cite{(kristiansen2013)comprehensive} stated most of previous practical research in timetable were founded that they were based on simulation dataset. Hence, they introduced a open-source dataset in Denmark university and its format description. ALTUMA \citep{(tesfaldet2008)automated} was the solver in the University of Asmara which using memetic algorithm, its performance was experienced and evaluated by read data in the university successfully. Moreover, UniTime \citep{(muller2016)reallife} was an open-source system and successfully implemented in a large scale university.
+
 
 \newpage
 
@@ -149,6 +163,9 @@ Depend on university management, these constraints should be spilt into two part
 \subsection{Mathematical formulation: A Graph Coloring representation}
 
 Consider a basic course scheduling model in daily scheduling. For one course $co_a$ with a set of lectures $L=\left\{\ell_{1}, \ldots, \ell_{b}\right\}$, we denote a lecture-node $m_{ab}$ for each course and lecture. Due to the class overlaps constraint, all pairs of lecture note in course $co_a$ are connected by edges. While assume all course have no sections, if there is a student taking both courses $co_{a1}$ and $co_{a2}$, we introduce an edge between every pair of lecture node $m_{a1b}$ and $m_{a2b}$. The feasible course scheduling among $p$ periods is respect to the node coloring of graph G with $p$ colors. An example is given in Figure \ref{Fig.main}. Here we have 3 courses and each of them has 1, 2 or 3 lectures. Student group A takes courses $co_1$ and $co_2$, another group B takes $co_2$ and $co_3$. A feasible solution is drawn by 5 colors, which means at least 5 periods is needed to assign courses without conflicts.
+
+With pre-assignment constraints and teacher unavailability, we introduce two constraints samples: (1). $co_{1}$ not scheduled at period 1; (2). one lectures of $K_{3}$ at period 1 or 3. A set of period nodes are added to Figure \ref{Fig.sub.1} and then we get Figure \ref{Fig.sub.2}. Easy to see that pre-assignment of periods are equal to teacher time unavailability.
+
 \begin{figure}[htbp]
 	\centering  %图片全局居中
 	\subfigure[without constrain ]{
@@ -161,12 +178,6 @@ Consider a basic course scheduling model in daily scheduling. For one course $co
 	\label{Fig.main}
 \end{figure}
 
-With pre-assignment constraints and teacher unavailability, we introduce two constraints samples: (1). $co_{1}$ not scheduled at period 1; (2). one lectures of $K_{3}$ at period 1 or 3. A set of period nodes are added to Figure \ref{Fig.sub.1} and then we get Figure \ref{Fig.sub.2}. Easy to prove that pre-assignment of periods are equal to teacher time unavailability.
-
-\subsection{Mathematical programming to optimal solution}
-
-While feasible solution is exists, or we are supposed to evaluate one from some bad solutions where have conflicts in hard constraints, we introduce an objective function $\sum_{i=1}^{q} \sum_{k=1}^{p} C_{i k} y_{i k}$, $y_{i k}=1$ if a lecture of course $co_{i}$ is scheduled at period $k$ and $y_{i k}=0$ otherwise; $C_{ik}$ is the cost function to indicate the plausibility of assignments. Hence, the problem is to find the best global optimal solution under constraints.
-
 \newpage
 
 \section{Research Approach}
@@ -176,32 +187,19 @@ While feasible solution is exists, or we are supposed to evaluate one from some 
 
 \subsubsection{Tabu Search}
 
-Tabu Search is a heuristic algorithm designed for finding a global optimal points and has been used for solving combinatorial optimization problem including graph node coloring, large scale timetabling and TSP efficiently. The basic process is given an feasible solution as initial points and an aspiration function to evaluate results, moving the initial point to another solution in the neighbor of initial point and making comparison and recording the better solution with aspiration function. The algorithm does not stop until get a global optimum or reach the max number of iterations. The core of Tabu Search algorithm is tabu list $T$ that all moves back to current point are forbidden in the next $|T|$ iterations. The general Tabu Search technique is shown as follow:
-\begin{align*}
-	 & \textbf { Initialization }                                                                                                                   \\
-	 & \qquad s:=\text { initial solution in } X                                                                                                    \\
-	 & \qquad \text {nbiter }:=0                                                                                                                    \\
-	 & \qquad \quad\left(* \text { current iteration }^{*}\right)                                                                                   \\
-	 & \qquad \text {bestiter }:=0                                                                                                                  \\
-	 & \qquad\quad\left(* \text { iteration when the best solution has been found }^{*}\right)                                                      \\
-	 & \qquad \text {bestsol }:=s                                                                                                                   \\
-	 & \qquad \quad\left(* \text { best solution }^{*}\right)                                                                                       \\
-	 & \qquad T:=\varnothing                                                                                                                        \\
-	 & \qquad \text { initialize the aspiration function } A \text {; }                                                                             \\
-	 & \textbf { while } \left.\left(f(s)>f^{*}\right) \textbf { and} \text{ (nbiter - bestiter }<\text { nbmax }\right) \textbf { do }             \\
-	 & \qquad \text { nbiter := nbiter }+1 \text {; }                                                                                               \\
-	 & \qquad\text { generate a set } V^{*} \text { of solutions } s_{i} \text { in } N(s) \text { which are either }\text {not tabu or such that } \\
-	 & \qquad \quad A(f(s)) \geq f\left(s_{i}\right) \text {; }                                                                                     \\
-	 & \qquad \text {choose a solution } s^{*} \text { minimizing } f \text { over } V^{*}                                                          \\
-	 & \qquad \text {update the aspiration function } A \text { and the tabu list } T \text {; }                                                    \\
-	 & \qquad \textbf {if } f\left(s^{*}\right)<f(\text { bestsol }) \textbf { then }                                                               \\
-	 & \qquad \quad \text {bestsol }:=s^{*} \text {; bestiter : = nbiter, }                                                                         \\
-	 & \qquad s:=s^{*} \text {; }
-\end{align*}
+Tabu Search is a heuristic algorithm designed for finding a global optimal points and has been used for solving combinatorial optimization problem including graph node coloring, large scale timetabling and TSP efficiently. The basic process is given an feasible solution as initial points and an aspiration function to evaluate results, moving the initial point to another solution in the neighbor of initial point and making comparison and recording the better solution with aspiration function. The algorithm does not stop until get a global optimum or reach the max number of iterations. The core of Tabu Search algorithm is tabu list $T$ that all moves back to current point are forbidden in the next $|T|$ iterations. TABCOL\citep{(hertz1987)using} is a modified version of Tabu search for coloring of graph. It first initializes a random solution with a large enough number $k$, then use Tabu to reduce the conflicts of edges and obtain a feasible $k$-color graph as a initialization solution for next iteration until get a smallest color set for graph.
 
-\subsection{Attention Mechanism}
+% \begin{figure}
+% 	\centering
+% 	\includegraphics[width=0.7textwidth]{图片文件名称}
+% 	\caption{图片标题名称}label{fig1}
+% 	\end{figure}
 
-\subsection{Reinforcement Learning}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\linewidth]{fig3.png}
+	\caption{General Tabu Search Algorithm \citep{(hertz1991)tabu}}
+\end{figure}
 
 \subsection{Data collection}
 
@@ -215,40 +213,55 @@ There are two ways to collect dataset. The first is open-source datasets in UniT
 \begin{itemize}
 	\item Programming system
 	      \begin{enumerate}
-		      \item Data collection
+		      \item Data collection. Timeline: before the winter holidays.
 		            \begin{enumerate}
-			            \item Online dataset: Reader function of XML file in Python. Timeline: Dec. 3 - Dec. 5
-			            \item XJTLU dataset:
+			            \item Collect and save online data in University Course Timetabling Data Format (v2.4) \footnote{\url{https://www.unitime.org/uct_dataformat_v24.php}}, write and save data in Python.
+			            \item Consider the course section and complexity of problem, we collect real data in XJTLU, 2021-2022 academic year, as follow:
+			                  \begin{enumerate}
+				                  \item Year 4 applied mathematics students
+				                  \item Year 4 applied mathematics and finical mathematics students
+				                  \item Year 1 students with fundamental mathematics course.
+			                  \end{enumerate}
 		            \end{enumerate}
 	      \end{enumerate}
 	\item Algorithm
 	      \begin{enumerate}
-		      \item Tabu Algorithm
+		      \item Tabu Algorithm improvement
 		            \begin{enumerate}
-			            \item random graph coloring. Timeline:Dec. 2 - Dec. 4
-			            \item timetabling subproblem with online dataset. Timeline: Dec. 4 - Dec. 6
-			            \item grouping subproblem with online dataset. Timeline: Dec. 6 - Dec. 15
-			            \item real timetabling subproblem in XJTLU, Y4, AM. Timeline: Dec. 20 - Jun. 14
-			            \item real grouping subproblem in XJTLU, Y1. Timeline: Dec. 20 - Jun. 27
+						\item general TABCOL implemented in timetabling subproblem and grouping subproblem. Timeline: Dec. 1 - Dec. 10.
+						\item use matrix calculate to speed up Tabu search. Timeline: Dec. 10 - Dec. 20.
+						\item try hybrid method to find the feasible initial solution for Tabu search automatically. Timeline: Dec. 20 - Jun. 10.
+						\item use graph decomposition algorithm to reduce vertices iterations of Tabu search. Timeline: Jun. 10 - Jun. 25.
 		            \end{enumerate}
-		      \item graph decomposition algorithm. Timeline: Jun. 17 - Jun. 23
-		      \item Attention Mechanism and  Reinforcement Learning
+		      \item Attention Mechanism and Reinforcement Learning
 		            \begin{enumerate}
-			            \item Attention Mechanism. Timeline: Jun. 24 - Jun. 30
-			            \item Reinforcement Learning. Timeline: Feb. 1 - Feb. 13
-			            \item Attention Mechanism with RL in TSP: Feb.14 -Feb. 20
-			            \item real timetable scheduling problem in XJTLU.
+			            \item Attention Mechanism. Timeline: Jun. 25 - Feb. 5
+			            \item Reinforcement Learning. Timeline: Feb. 5 - Feb. 20
+			            \item Attention Mechanism with RL in TSP. Timeline: Feb. 20 - Feb. 28
+			            \item real timetable scheduling problem in XJTLU. Timeline: semester 2.
 		            \end{enumerate}
-	      \end{enumerate}
-	\item Knowledge
-	      \begin{enumerate}
-		      \item Attention Mechanism
-		      \item Reinforcement Learning
-		      \item Plot graph in Python.
 	      \end{enumerate}
 \end{itemize}
 
-\subsection{Challenge}
+\subsection{Skills and Knowledge}
+\begin{enumerate}
+	\item \textbf{Graph theory}: learn how to color a graph and the method to reduce edge and decomposition of a big graph.
+	\item \textbf{Tabu Search}: learn its idea and variants in graph coloring and scheduling area.
+	\item \textbf{Reinforcement Learning}: it is a fast developed Neural Network and more applications appears in combinatorial operational problems. Study its principle and usage in scheduling problem.
+	\item \textbf{Plotting graph in Python}: there are many packages to help plot in python, learn one of them to obtain visual, or even interactive graphs to help understand.
+\end{enumerate}
+
+\subsection{Challenges}
+\begin{enumerate}
+	\item \textbf{Lack of computing resources}: Heuristic algorithm is an efficient way to solver graph coloring problem and scheduling problems, due to the complexity of this class of NP-hard problems, however, as nodes of graph increasing, using Tabu Search to get a result is also time-consuming. Taking TABCOL algorithm for coloring of graph \footnote{\url{https://github.com/pchervi/Graph-Coloring}} as an example, we create range a series of graph which the probability of one edge in two random vertices is 0.5 and run it on 2-core CPU machine. Figure \ref{fig4} tells that with the increasing of vertices, running time grows exponentially.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.6\linewidth]{fig4.png}
+		\caption{Random Graph Coloring by TABCOL Algorithm}\label{fig4}
+	\end{figure}
+	\item \textbf{Deployment of RL algorithm}: Though RL algorithm has been developed in various areas for years, its applications in scheduling problems are rare. Luckily, we can learn another TSP to copy the experiences of how to use Reinforcement Learning algorithm in combinatorial problems, but still there is a long way to applied RL in our project and the difficulty can not be ignored.
+\end{enumerate}
 
 
 \newpage

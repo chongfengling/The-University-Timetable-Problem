@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.5.20)  2 DEC 2021 15:55
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.5.20)  7 DEC 2021 20:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -730,7 +730,12 @@ Package fontspec Info: Font family 'FandolFang-Regular(0)' created for font
 \tf@toc=\write4
 \openout4 = `intern_report.toc'.
 
- [2] [3] [4]
+ [2]
+
+LaTeX Font Warning: Font shape `T1/lmr/bx/sc' undefined
+(Font)              using `T1/lmr/bx/n' instead on input line 99.
+
+[3] [4] [5]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmr' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
@@ -739,30 +744,40 @@ File: fig1.png Graphic file (type bmp)
 <fig1.png>
 File: fig2.png Graphic file (type bmp)
 <fig2.png>
- [5] [6] [7] [8] (./intern_report.bbl
-Underfull \hbox (badness 1005) in paragraph at lines 78--81
+ [6] [7]
+File: fig3.png Graphic file (type bmp)
+<fig3.png>
+ [8]
+File: fig4.png Graphic file (type bmp)
+<fig4.png>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[9] (./intern_report.bbl
+Underfull \hbox (badness 1005) in paragraph at lines 72--75
 []\T1/lmr/m/n/10 Johnes, J. (2015), `Op-er-a-tional Re-search in ed-u-ca-tion', \T1/lmr/m/it/10 Eu-ro-pean Jour-nal of Op-er-a-tional Re-search
  []
 
 
-Underfull \hbox (badness 1270) in paragraph at lines 91--94
+Underfull \hbox (badness 1270) in paragraph at lines 85--88
 []\T1/lmr/m/n/10 Kool, W., van Hoof, H. & Welling, M. (2019), `At-ten-tion, Learn to Solve Rout-ing Prob-lems!',
  []
 
-) [9] (./intern_report.aux)
+[10]) [11] (./intern_report.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `intern_report.out' has not changed.
-(rerunfilecheck)             Checksum: 6DD54E6211C3226B5B088C2ABBBACEF7;2169.
+(rerunfilecheck)             Checksum: 3797009441C86E3FFD2B9360DA582E35;1721.
  ) 
 Here is how much of TeX's memory you used:
- 15807 strings out of 478866
- 310830 string characters out of 5865579
+ 15877 strings out of 478866
+ 311849 string characters out of 5865579
  838864 words of memory out of 5000000
- 35383 multiletter control sequences out of 15000+600000
- 456394 words of font info for 78 fonts, out of 8000000 for 9000
+ 35435 multiletter control sequences out of 15000+600000
+ 456034 words of font info for 99 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 83i,11n,89p,4724b,485s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 83i,10n,89p,2560b,532s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on intern_report.pdf (9 pages).
+Output written on intern_report.pdf (11 pages).
