@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.5.20)  7 DEC 2021 20:51
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.5.20)  8 DEC 2021 15:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**intern_report
-(./intern_report.tex
+**"interim _report"
+(./interim _report.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-02-18> (c:/texlive/2021/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
@@ -481,8 +481,8 @@ Package fontspec Info: Font family 'FandolSong-Regular(0)' created for font
 (fontspec)             <->"[FandolKai-Regular.otf]/OT:language=dflt;"
 (fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
 
-(./intern_report.aux)
-\openout1 = `intern_report.aux'.
+(./interim _report.aux)
+\openout1 = `"interim _report.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 82.
 LaTeX Font Info:    ... okay on input line 82.
@@ -644,9 +644,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 82.
 LaTeX Info: Redefining \pageref on input line 82.
 LaTeX Info: Redefining \nameref on input line 82.
- (./intern_report.out) (./intern_report.out)
+ (./interim _report.out) (./interim _report.out)
 \@outlinefile=\write3
-\openout3 = `intern_report.out'.
+\openout3 = `"interim _report.out"'.
 
 LaTeX Info: Redefining \microtypecontext on input line 82.
 Package microtype Info: Character protrusion enabled (level 2).
@@ -726,9 +726,9 @@ Package fontspec Info: Font family 'FandolFang-Regular(0)' created for font
  [1
 
 
-] (./intern_report.toc)
+] (./interim _report.toc)
 \tf@toc=\write4
-\openout4 = `intern_report.toc'.
+\openout4 = `"interim _report.toc"'.
 
  [2]
 
@@ -750,11 +750,7 @@ File: fig3.png Graphic file (type bmp)
  [8]
 File: fig4.png Graphic file (type bmp)
 <fig4.png>
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[9] (./intern_report.bbl
+ [9] [10] (./interim _report.bbl
 Underfull \hbox (badness 1005) in paragraph at lines 72--75
 []\T1/lmr/m/n/10 Johnes, J. (2015), `Op-er-a-tional Re-search in ed-u-ca-tion', \T1/lmr/m/it/10 Eu-ro-pean Jour-nal of Op-er-a-tional Re-search
  []
@@ -764,20 +760,20 @@ Underfull \hbox (badness 1270) in paragraph at lines 85--88
 []\T1/lmr/m/n/10 Kool, W., van Hoof, H. & Welling, M. (2019), `At-ten-tion, Learn to Solve Rout-ing Prob-lems!',
  []
 
-[10]) [11] (./intern_report.aux)
+) [11] (./interim _report.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package rerunfilecheck Info: File `intern_report.out' has not changed.
-(rerunfilecheck)             Checksum: 3797009441C86E3FFD2B9360DA582E35;1721.
+Package rerunfilecheck Info: File `"interim _report".out' has not changed.
+(rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
  15877 strings out of 478866
- 311849 string characters out of 5865579
- 838864 words of memory out of 5000000
+ 311891 string characters out of 5865579
+ 838872 words of memory out of 5000000
  35435 multiletter control sequences out of 15000+600000
  456034 words of font info for 99 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 83i,10n,89p,2560b,532s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 83i,10n,89p,2470b,532s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on intern_report.pdf (11 pages).
+Output written on interim _report.pdf (11 pages).

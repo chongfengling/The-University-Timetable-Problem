@@ -65,8 +65,8 @@
 % \date{December 1, 2021}
 
 % Uncomment to override  the `A preprint' in the header
-\renewcommand{\headeright}{Intern Report}
-\renewcommand{\undertitle}{Intern Report}
+\renewcommand{\headeright}{Interim Report}
+\renewcommand{\undertitle}{Interim Report}
 \renewcommand{\shorttitle}{Timatable Problem}
 
 %%% Add PDF metadata to help others organize their library
@@ -90,7 +90,7 @@
 % \end{abstract}
 
 % keywords can be removed
-\keywords{Timetable Scheduling \and Graph Coloring \and Tabu Search \and Reinforcement Learning}
+% \keywords{Timetable Scheduling \and Graph Coloring \and Tabu Search \and Reinforcement Learning}
 
 \newpage
 \tableofcontents
@@ -98,24 +98,25 @@
 
 \begin{abstract}
 	% \begin{center}
-	Timetabling problem is popular in various areas and can be formulated to graph coloring problem. We consider a simple kind - the university timetabling problem in XJTLU as our target problem. Due to the large scale number of people and constrains, we use and modify a heuristic algorithms as our solver to built up a timetable system. With the development of Neural Networks and its successful applications in other combinatorial problems, we also attempt to apply Reinforcement Learning to enhance our solver. 
+	Timetabling problem is popular in various areas and can be formulated to graph coloring problem. We consider a simple kind - the university timetabling problem in XJTLU as our target problem. Due to the large scale number of people and constrains, we use and modify a heuristic algorithm as our solver to built up a timetable system. With the development of Neural Networks and its successful applications in other combinatorial problems, we also attempt to apply Reinforcement Learning to enhance our solver. 
 	% \end{center}
 \end{abstract}
+\keywords{Timetable Scheduling \and Graph Coloring \and Heuristic Algorithm \and Tabu Search \and Reinforcement Learning}
 
 \newpage
 
 \section{Introduction}
 
-Timetable scheduling is a practical problem with applications in several areas including transportation, hospital and education. Every semester one university is supposed to develop timetables for teach activities and examination to meeting students and staffs' requirements and school hardware source limitation. Credit to pervious works, university timetabling has be divide into two interrelated subproblem: timetabling subproblem and grouping subproblem based on graph coloring\citep{(hertz1991)tabu}. While a lot of studies has been spent on this topic, there is still a big gap between algorithm result and practical timetable \citep{(mccollum2006)perspective} mainly due to various constraints of different university and large scale of data. Consider these constraints with a large volume of data, timetable scheduling is a NP-hard or NP-complete problem \citep{(even1975)complexity}, which means it can not be solved in a polynomial time with large scale problem data. Up to now most of solver is based on heuristic algorithm and its variants like meta-heuristic and hyper-heuristic. This paper attempts to implement some heuristic algorithm while introducing a new method Reinforcement Learning to built a system to solve course timetable problem in Xi'an Jiaotong-Liverpool University (XJTLU).
+Timetable scheduling is a practical problem with applications in several areas including transportation, hospital and education. Every semester one university is supposed to develop timetables for teach activities and examination to meeting students and staffs' requirements and school hardware source limitation. Credit to pervious works, university timetabling has been divide into two interrelated subproblem: timetabling subproblem and grouping subproblem based on graph coloring\citep{(hertz1991)tabu}. While a lot of studies has been spent on this topic, there is still a big gap between algorithm result and practical timetable \citep{(mccollum2006)perspective} mainly due to various constraints of different university and large scale of data. Consider these constraints with a large volume of data, timetable scheduling is a NP-hard or NP-complete problem \citep{(even1975)complexity}, which means it can not be solved in a polynomial time with large scale problem data. Up to now most of solver is based on heuristic algorithm and its variants like meta-heuristic and hyper-heuristic. This paper attempts to implement some heuristic algorithm while introducing a new method Reinforcement Learning to built a system to solve course timetabling problem in Xi'an Jiaotong-Liverpool University (XJTLU).
 
-The structure of this paper is organized as follow. Section \ref{sec: Literature Review} is a review of the development in timetable scheduling including algorithms, computer system and benchmarks. Section \ref{sec: Problem Description} is a problem description based on graph theory. In section \ref{sec: Research Approach} we present methodologies including Tabu Search algorithm and one improved version called TABCOL. Specific execution plan with timeline and challenges is stated in Section \ref{sec: Execution Plan}.
+The structure of this paper is organized as follow. Section \ref{sec: Literature Review} is a review of the development of timetable scheduling including algorithms, computer system and benchmarks. Section \ref{sec: Problem Description} is a problem description based on graph theory. In section \ref{sec: Research Approach} we present methodologies including Tabu Search algorithm and one improved version called TABCOL. Specific execution plan with timeline and challenges is stated in Section \ref{sec: Execution Plan}.
 
 \newpage
 
 \section{Literature Review}
 \label{sec: Literature Review}
 
-Since the 1980s, the connection between timetabling problem and graph coloring with heuristic algorithms has been established. In 1985, \citet{(werra1985)introduction} stated a formal way to model course-teacher timetabling and provided formulations in both graph edge coloring and graph node coloring. Then \cite{(hertz1987)using} solved a large scale random graph coloring problem by tabu algorithm and the TABUCOL procedure that reduces number color from maximum value, compared with annealing algorithm, the CPU-time was much shorter and furthermore, for some unsolved graph, tabu algorithm could indicate the "bad" edges that needed to be reduced. The principles and illustrations of Tabu Algorithm were given by \cite{(werra1989)tabu} and later \cite{(glover1990)tabu} mentioned that the advantage of Tabu Search compared other meta-heuristic algorithm owing to its long-term memory. \cite{(hertz1991)tabu} and \cite{(tuga2007)hybrid} used Tabu Algorithm to solved timetabling problem and due to hard constraints can not guarantee the existence of a feasible solution, they first defined the feasible solution respect to soft constraints and optimized it by hard constraints. In addition, \cite{(hertz1991)tabu} mentioned another problem that grouping students into class which they have the same courses in the same class. \cite{(costa1994)tabu} made a detailed description about timetable problem and mathematical formulation. Based on the property of meta-heuristic, he generated a general Tabu Algorithm which can be adapted under various constraints and used in different university and colleges. In 1997, \cite{(werra1997)combinatorics} added a new constraint to spread lectures uniformly across a set of periods and proved some existence of solutions under some typical constraints. \cite{(schaerf1999)survey} made a survey about how heuristic algorithm could assign timetable automatically. To reduce the influence of parameter choice, a hyper-heuristic algorithm based on Tabu Algorithm was used to solved examination by \cite{(hussin2005)tabu} and \cite{(kendall2005)investigation} which is parameter free. \cite{(galinier2006)survey} modified TABCOL algorithm and made a comparison between four graph coloring method with different search space and search strategies. While an initial feasible solution is needed for all heuristic algorithm, \cite{(burke2007)graphbased} create heuristic algorithm based on graph degree and operate algorithm in a hyper-heuristic search space reduce the difficult of finding a feasible initial solution.
+Since the 1980s, the connection between timetabling problem and graph coloring with heuristic algorithms has been established. In 1985, \citet{(werra1985)introduction} stated a formal way to model course-teacher timetabling and provided formulations in both graph edge coloring and graph node coloring. Then \cite{(hertz1987)using} solved a large scale random graph coloring problem by tabu algorithm and the TABUCOL procedure that reduces number color from maximum value, compared with annealing algorithm, the CPU-time was much shorter and furthermore, for some unsolved graph, tabu algorithm could indicate the "bad" edges that needed to be reduced. The principles and illustrations of Tabu Algorithm were given by \cite{(werra1989)tabu} and later \cite{(glover1990)tabu} mentioned that the advantage of Tabu Search compared other meta-heuristic algorithm owing to its long-term memory. \cite{(hertz1991)tabu} and \cite{(tuga2007)hybrid} used Tabu Algorithm to solved timetabling problem and due to hard constraints can not guarantee the existence of a feasible solution, they first defined the feasible solution respect to soft constraints and optimized it by hard constraints. In addition, \cite{(costa1994)tabu} made a detailed description about timetable problem and mathematical formulation. Based on the property of meta-heuristic, he generated a general Tabu Algorithm which can be adapted under various constraints and used in different university and colleges. In 1997, \cite{(werra1997)combinatorics} added a new constraint to spread lectures uniformly across a set of periods and proved some existence of solutions under some typical constraints. \cite{(schaerf1999)survey} made a survey about how heuristic algorithm could assign timetable automatically. To reduce the influence of parameter choice, a hyper-heuristic algorithm based on Tabu Algorithm was used to solved examination by \cite{(hussin2005)tabu} and \cite{(kendall2005)investigation} which is parameter free. \cite{(galinier2006)survey} modified TABCOL algorithm and made a comparison between four graph coloring method with different search space and search strategies. While an initial feasible solution is needed for all heuristic algorithm, \cite{(burke2007)graphbased} create heuristic algorithm based on graph degree and operate algorithm in a hyper-heuristic search space reduce the difficult of finding a feasible initial solution.
 
 With the development of Neural Network, \cite{(fazelzarandi2020)state} stated the advantages and disadvantages of some neural network algorithm and Tabu Search employed in scheduling. While Attention Mechanism successfully employed in some NLP models with transformer framework \citep{(ashishvaswani2017)attention,(devlin2019)bert}, \cite{(kool2019)attention} had used Attention Mechanism with Reinforcement Learning to solve TSP problem with up to 100 nodes.
 
@@ -185,7 +186,7 @@ With pre-assignment constraints and teacher unavailability, we introduce two con
 
 \subsubsection{Tabu Search}
 
-Tabu Search is a heuristic algorithm designed for finding a global optimal points and has been used for solving combinatorial optimization problem including graph node coloring, large scale timetabling and TSP efficiently. The basic process is given an feasible solution as initial points and an aspiration function to evaluate results, moving the initial point to another solution in the neighbor of initial point and making comparison and recording the better solution by aspiration function. The algorithm does not stop until get a global optimum or reach the max number of iterations. The core of Tabu Search algorithm is tabu list $T$ that all moves back to current point are forbidden in the next $|T|$ iterations. TABCOL\citep{(hertz1987)using} is a modified version of Tabu search for coloring of graph. It first initializes a random solution with a large enough number $k$, then use Tabu to reduce the conflicts of edges and obtain a feasible $k$-color graph as a initialization solution for next iteration until get a smallest color set for graph.
+Tabu Search is a heuristic algorithm designed for finding a global optimal point and has been used for solving combinatorial optimization problem including graph node coloring, large scale timetabling and TSP efficiently. The basic process is given a feasible solution as initial point and an aspiration function to evaluate results, moving the initial point to another solution in the neighbor of the initial point and making comparison and recording the better solution by aspiration function. The algorithm does not stop until get a global optimum or reach the max number of iterations. The core of Tabu Search algorithm is tabu list $T$ that all moves back to current point are forbidden in the next $|T|$ iterations. TABCOL\citep{(hertz1987)using} is a modified version of Tabu search for coloring of graph. It first initializes a random solution with a large enough number $k$, then use Tabu to reduce the conflicts of edges and obtain a feasible $k$-color graph as an initialization solution for next iteration until get a smallest color set for the graph.
 
 % \begin{figure}
 % 	\centering
@@ -214,7 +215,7 @@ There are two ways to collect data. The first is using open-source datasets in U
 		      \item Data collection. Timeline: before the winter holidays.
 		            \begin{enumerate}
 			            \item Collect and save online data in University Course Timetabling Data Format (v2.4) \footnote{\url{https://www.unitime.org/uct_dataformat_v24.php}}, write and save data in Python.
-			            \item Consider the course section and complexity of problem, we collect real data in XJTLU, 2021-2022 academic year, as follow:
+			            \item Consider the course section and complexity of problems, we collect real data in XJTLU, 2021-2022 academic year, as follow:
 			                  \begin{enumerate}
 				                  \item Year 4 applied mathematics students
 				                  \item Year 4 applied mathematics and finical mathematics students
@@ -227,9 +228,9 @@ There are two ways to collect data. The first is using open-source datasets in U
 		      \item Tabu Algorithm improvement
 		            \begin{enumerate}
 						\item general TABCOL implemented in timetabling subproblem and grouping subproblem. Timeline: Dec. 1 - Dec. 10.
-						\item use matrix calculate to speed up Tabu search. Timeline: Dec. 10 - Dec. 20.
+						\item use matrix to speed up Tabu Search. Timeline: Dec. 10 - Dec. 20.
 						\item try hybrid method to find the feasible initial solution for Tabu search automatically. Timeline: Dec. 20 - Jun. 10.
-						\item use graph decomposition algorithm to reduce vertices iterations of Tabu search. Timeline: Jun. 10 - Jun. 25.
+						\item use graph decomposition algorithm to reduce edges in the graph. Timeline: Jun. 10 - Jun. 25.
 		            \end{enumerate}
 		      \item Attention Mechanism and Reinforcement Learning
 		            \begin{enumerate}
@@ -246,21 +247,22 @@ There are two ways to collect data. The first is using open-source datasets in U
 	\item \textbf{Graph theory}: learn how to color a graph and the method to reduce edge and decomposition of a big graph.
 	\item \textbf{Tabu Search}: learn its idea and variants in graph coloring and scheduling area.
 	\item \textbf{Reinforcement Learning}: it is a fast developed Neural Network and more applications appears in combinatorial operational problems. Study its principle and usage in scheduling problem.
-	\item \textbf{Plotting graph in Python}: there are many packages to help plot in python, learn one of them to obtain visual, or even interactive graphs to help understand.
+	\item \textbf{Plotting graph in Python}: there are many packages to plot in python, learn one of them to obtain visual, or even interactive graphs to help understand.
 \end{enumerate}
 
 \subsection{Challenges}
 \begin{enumerate}
-	\item \textbf{Lack of computing resources}: Heuristic algorithm is an efficient way to solver graph coloring problem and scheduling problems, due to the complexity of this class of NP-hard problems, however, as nodes of graph increasing, using Tabu Search to get a result is also time-consuming. Taking TABCOL algorithm for coloring of graph \footnote{\url{https://github.com/pchervi/Graph-Coloring}} as an example, we create range a series of graph which the probability of one edge in two random vertices is 0.5 and run it on 2-core CPU machine. Figure \ref{fig4} tells that with the increasing of vertices, running time grows exponentially.
+	\item \textbf{Lack of computing resources}: Heuristic algorithm is an efficient way to solver graph coloring problem and scheduling problems, due to the complexity of this class of NP-hard problems, however, as nodes of the graph increasing, using Tabu Search to get a result is also time-consuming. Taking TABCOL algorithm for coloring of graph \footnote{\url{https://github.com/pchervi/Graph-Coloring}} as an example, we create a series of graph which the probability of one edge in two random vertices is 0.5 and run it on two-core CPU machine. Figure \ref{fig4} tells that with the increasing of vertices, running time grows exponentially.
 	
-	\begin{figure}[h]
+	\begin{figure}[htbp]
 		\centering
 		\includegraphics[width=0.6\linewidth]{fig4.png}
 		\caption{Random Graph Coloring by TABCOL Algorithm}\label{fig4}
 	\end{figure}
 	\item \textbf{Deployment of RL algorithm}: Though RL algorithm has been developed in various areas for years, its applications in scheduling problems are rare. Luckily, we can learn another TSP to copy the experiences of how to use Reinforcement Learning algorithm in combinatorial problems, but still there is a long way to applied RL in our project and the difficulty can not be ignored.
 \end{enumerate}
-
+\newpage
+\qquad
 
 \newpage
 

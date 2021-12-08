@@ -1,0 +1,44 @@
+
+2021-12-03 16:08:20
+number of nodes: 1
+['mycielski_graph', 1, 1, 0, 0.00036089999999999733]
+
+2021-12-03 16:08:20
+number of nodes: 2
+['mycielski_graph', 2, 2, 0, 0.0009671999999999459]
+
+2021-12-03 16:08:21
+number of nodes: 3
+['mycielski_graph', 3, 3, 0, 1.1060188000000002]
+
+2021-12-03 16:08:23
+number of nodes: 4
+['mycielski_graph', 4, 4, 2, 2.3275775000000003]
+
+2021-12-03 16:08:26
+number of nodes: 5
+['mycielski_graph', 5, 5, 7, 2.4581763]
+
+2021-12-03 16:08:29
+number of nodes: 6
+['mycielski_graph', 6, 6, 18, 3.1297162]
+
+2021-12-03 16:08:34
+number of nodes: 7
+['mycielski_graph', 7, 7, 44, 5.630581100000001]
+
+2021-12-03 16:08:56
+number of nodes: 8
+['mycielski_graph', 8, 8, 104, 21.528478]
+
+2021-12-03 16:11:43
+number of nodes: 9
+['mycielski_graph', 9, 9, 265, 166.563595]
+
+2021-12-03 16:50:17
+number of nodes: 10
+['mycielski_graph', 10, 10, 561, 2314.3103874999997]
+
+2021-12-03 20:18:00
+number of nodes: 11
+end up with 126 color
