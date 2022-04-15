@@ -204,64 +204,6 @@ Tabu Search is a heuristic algorithm designed for finding a global optimal point
 
 There are two ways to collect data. The first is using open-source datasets in UniTime and also the corresponding benchmarks. To deal the real problem in XJTLU, we first collect high level students in applied mathematics, then consider course sections, data of students with fundamental mathematics couse is the third benchmark for our system. 
 
-\newpage
-
-\section{Execution Plan}
-\label{sec: Execution Plan}
-\subsection{Timeline}
-\begin{itemize}
-	\item Programming system
-	      \begin{enumerate}
-		      \item Data collection. Timeline: before the winter holidays.
-		            \begin{enumerate}
-			            \item Collect and save online data in University Course Timetabling Data Format (v2.4) \footnote{\url{https://www.unitime.org/uct_dataformat_v24.php}}, write and save data in Python.
-			            \item Consider the course section and complexity of problems, we collect real data in XJTLU, 2021-2022 academic year, as follow:
-			                  \begin{enumerate}
-				                  \item Year 4 applied mathematics students
-				                  \item Year 4 applied mathematics and finical mathematics students
-				                  \item Year 1 students with fundamental mathematics course.
-			                  \end{enumerate}
-		            \end{enumerate}
-	      \end{enumerate}
-	\item Algorithm
-	      \begin{enumerate}
-		      \item Tabu Algorithm improvement
-		            \begin{enumerate}
-						\item general TABCOL implemented in timetabling subproblem and grouping subproblem. Timeline: Dec. 1 - Dec. 10.
-						\item use matrix to speed up Tabu Search. Timeline: Dec. 10 - Dec. 20.
-						\item try hybrid method to find the feasible initial solution for Tabu search automatically. Timeline: Dec. 20 - Jun. 10.
-						\item use graph decomposition algorithm to reduce edges in the graph. Timeline: Jun. 10 - Jun. 25.
-		            \end{enumerate}
-		      \item Attention Mechanism and Reinforcement Learning
-		            \begin{enumerate}
-			            \item Attention Mechanism. Timeline: Jun. 25 - Feb. 5
-			            \item Reinforcement Learning. Timeline: Feb. 5 - Feb. 20
-			            \item Attention Mechanism with RL in TSP. Timeline: Feb. 20 - Feb. 28
-			            \item real timetable scheduling problem in XJTLU. Timeline: semester 2.
-		            \end{enumerate}
-	      \end{enumerate}
-\end{itemize}
-
-\subsection{Skills and Knowledge}
-\begin{enumerate}
-	\item \textbf{Graph theory}: learn how to color a graph and the method to reduce edge and decomposition of a big graph.
-	\item \textbf{Tabu Search}: learn its idea and variants in graph coloring and scheduling area.
-	\item \textbf{Reinforcement Learning}: it is a fast developed Neural Network and more applications appears in combinatorial operational problems. Study its principle and usage in scheduling problem.
-	\item \textbf{Plotting graph in Python}: there are many packages to plot in python, learn one of them to obtain visual, or even interactive graphs to help understand.
-\end{enumerate}
-
-\subsection{Challenges}
-\begin{enumerate}
-	\item \textbf{Lack of computing resources}: Heuristic algorithm is an efficient way to solver graph coloring problem and scheduling problems, due to the complexity of this class of NP-hard problems, however, as nodes of the graph increasing, using Tabu Search to get a result is also time-consuming. Taking TABCOL algorithm for coloring of graph \footnote{\url{https://github.com/pchervi/Graph-Coloring}} as an example, we create a series of graph which the probability of one edge in two random vertices is 0.5 and run it on two-core CPU machine. Figure \ref{fig4} tells that with the increasing of vertices, running time grows exponentially.
-	
-	\begin{figure}[htbp]
-		\centering
-		\includegraphics[width=0.6\linewidth]{fig4.png}
-		\caption{Random Graph Coloring by TABCOL Algorithm}\label{fig4}
-	\end{figure}
-	\item \textbf{Deployment of RL algorithm}: Though RL algorithm has been developed in various areas for years, its applications in scheduling problems are rare. Luckily, we can learn another TSP to copy the experiences of how to use Reinforcement Learning algorithm in combinatorial problems, but still there is a long way to applied RL in our project and the difficulty can not be ignored.
-\end{enumerate}
-\newpage
 \qquad
 
 \newpage
