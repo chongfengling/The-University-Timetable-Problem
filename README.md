@@ -17,6 +17,7 @@ Timetable Problem`. This project focus on giving a general description and some 
   <p><em> Time and color needs to color a graph with different number of vertices.</em></p>
 </div>
 
+## Example
 <div style="text-align:center;">
   <img src="tex/final_report/time_tmp.png" alt="Space" width="900">
   <p><em> Average iterations of n colors, per 10000 attempts.</em></p>
